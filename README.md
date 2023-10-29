@@ -9,7 +9,7 @@ The goal of the project is to deploy a simple copy of the AirBnB website on a se
 This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
 
 ## Installation
-* Clone this repository: `git clone https://github.com/Naveduran/AirBnB_clone_v3.git`
+* Clone this repository: `git clone https://github.com/mehdielk11/AirBnB_clone_v3.git`
 * Access AirBnb directory: `cd AirBnB_clone_v3`
 * Run hbnb(interactively): `./console` and enter command
 * Run hbnb(non-interactively): `echo "<command>" | ./console.py`
@@ -38,14 +38,4 @@ EOF  all  create  destroy  help  quit  show  update
 ```
 
 ## Bugs
-No known bugs at this time. 
-
-## Authors
-Natalia Vera - [Github](https://github.com/Naveduran) / [Twitter](https://twitter.com/NaVeDuran1)
-Julieth Gonzalez - [Github](https://github.com/jyuly12) / [Twitter](https://twitter.com/jyuly12)
-
-First part of Airbnb: Alexa Orrico y Jennifer Huang
-Second part of Airbnb: Joann Vuong
-
-## License
-Public Domain. No copy write protection. 
+No known bugs at this time.
