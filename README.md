@@ -1,61 +1,51 @@
-# Synopsis
+# AirBnB - RESTful API
+The goal of the project is to deploy a simple copy of the AirBnB website on a server. It includes:
+- A command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging)
+- A website (the front-end) that shows the final product to everybody: static and dynamic
+- A database or files that store data (data = objects)
+- An API that provides a communication interface between the front-end and your data (retrieve, create, delete, update them)
 
-> The Airbnb clone project for which we are creating a copy of the [Airbnb](https://www.airbnb.com/).
-> Only some features will be implemented and will be listed below once completed.
-> At this stage, we are implementing an additional storage option. Based on which 
-> database is chosen (file storage or database storage), JSON is used or
-> MySQL and SQLalchemy is used via Python. Fabric is used for application deployment.
+## Environment
+This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
 
+## Installation
+* Clone this repository: `git clone https://github.com/Naveduran/AirBnB_clone_v3.git`
+* Access AirBnb directory: `cd AirBnB_clone_v3`
+* Run hbnb(interactively): `./console` and enter command
+* Run hbnb(non-interactively): `echo "<command>" | ./console.py`
 
-## Features
+## Examples of use
+```
+vagrantAirBnB_clone$./console.py
+(hbnb) help
 
-### Command Interpreter
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
 
-#### Description
-
-The Command Interpreter is used to manage the whole application's functionality from the command line, such as:
-+ Create a new object.
-+ Retrieve an object from a file, database, etc.
-+ Execute operation on objects. e.g. Count, compute statistics, etc.
-+ Update object's attributes.
-+ Destroy an object.
-
-#### Usage
-
-To launch the console application in interactive mode simply run:
-
-```console.py ```
-
-or to use the non-interactive mode run:
-
-```echo "your-command-goes-here" | ./console.py ```
-
-#### Commands
-
-Commands | Description | Usage
--------- | ----------- |-------- |
-**help** or **?**| Displays the documented commands. | **help**
-**quit**     | Exits the program. | **quit**
-**EOF**      | Ends the program. Used when files are passed into the program. | N/A
-**create**  | Creates a new instance of the \<class_name\>. Creates a Json file with the object representation. and prints the id of created object. | **create** \<class_name\>
-**show**    | Prints the string representation of an instance based on the class name and id. | **show** \<class_name class_id\>
-**destroy** | Deletes and instance base on the class name and id. | **destroy** \<class_name class_id\>
-**all** | Prints all string representation of all instances based or not on the class name | **all** or **all** \<class_name class_id\>
-**update** | Updates an instance based on the class name and id by adding or updating attribute | **update** \<class_name class_id key value\>
-
-## Resources
-* Fabric: [Usage1](https://www.digitalocean.com/community/tutorials/how-to-use-fabric-to-automate-administration-tasks-and-deployments), [Usage2](https://www.pythonforbeginners.com/systems-programming/how-to-use-fabric-in-python), [Documenation](http://www.fabfile.org/)
-* Nginx: [Beginner's Config file](http://nginx.org/en/docs/beginners_guide.html), [Root vs Alias](https://blog.heitorsilva.com/en/nginx/diferenca-entre-root-e-alias-do-nginx/), 
-
-## Tests
-
-If you wish to run at the test for this application all of the test are located
-under the **test/** folder and can execute all of them by simply running:
-
-```python3 -m unittest discover tests ```
-
-from the root directory.
+(hbnb) all MyModel
+** class doesn't exist **
+(hbnb) create BaseModel
+7da56403-cc45-4f1c-ad32-bfafeb2bb050
+(hbnb) all BaseModel
+[[BaseModel] (7da56403-cc45-4f1c-ad32-bfafeb2bb050) {'updated_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772167), 'id': '7da56403-cc45-4f1c-ad32-bfafeb2bb050', 'created_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772123)}]
+(hbnb) show BaseModel 7da56403-cc45-4f1c-ad32-bfafeb2bb050
+[BaseModel] (7da56403-cc45-4f1c-ad32-bfafeb2bb050) {'updated_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772167), 'id': '7da56403-cc45-4f1c-ad32-bfafeb2bb050', 'created_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772123)}
+(hbnb) destroy BaseModel 7da56403-cc45-4f1c-ad32-bfafeb2bb050
+(hbnb) show BaseModel 7da56403-cc45-4f1c-ad32-bfafeb2bb050
+** no instance found **
+(hbnb) quit
+```
 
 ## Bugs
+No known bugs at this time. 
 
-+ No known bugs at this time.
+## Authors
+Natalia Vera - [Github](https://github.com/Naveduran) / [Twitter](https://twitter.com/NaVeDuran1)
+Julieth Gonzalez - [Github](https://github.com/jyuly12) / [Twitter](https://twitter.com/jyuly12)
+
+First part of Airbnb: Alexa Orrico y Jennifer Huang
+Second part of Airbnb: Joann Vuong
+
+## License
+Public Domain. No copy write protection. 

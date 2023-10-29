@@ -1,36 +1,33 @@
 #!/usr/bin/python3
-"""
-creating blueprint for flask
-"""
-from flask import Flask, Blueprint,  make_response, jsonify
-from models import storage
-import os
-from flask_cors import CORS
-from api.v1.views import app_views
+"""Defines flask aplications"""
 
+from models import storage
+from os import getenv
+from api.v1.views import app_views
+from flask import Flask, jsonify, abort
+from flask_cors import CORS
 
 app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
+
 app.register_blueprint(app_views)
-cors = CORS(app, resources={r"/*": {'origins': ['0.0.0.0']}})
-
-
-@app.teardown_appcontext
-def teardown_appcontext(self):
-    """ closes down current session """
-    storage.close()
+cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 
 @app.errorhandler(404)
-def page_not_found(error):
-    """
-    a handler for 404 errors that returns a
-    JSON-formatted 404 status code response
-    """
-    return (jsonify({"error": "Not found"}), 404)
+def error_handler(error):
+    """Error handler, 404 response"""
+    response = jsonify({"error": "Not found"})
+    return response, 404
+
+
+@app.teardown_appcontext
+def teardown(exception):
+    """Close process"""
+    storage.close()
 
 
 if __name__ == "__main__":
-    hosts = os.getenv("HBNB_API_HOST", default='0.0.0.0')
-    ports = int(os.getenv("HBNB_API_PORT", default=5000))
-    app.run(host=hosts, port=ports, threaded=True)
+    host = getenv('HBNB_API_HOST', default='0.0.0.0')
+    port = int(getenv('HBNB_API_PORT', default=5000))
+    app.run(host=host, port=port, threaded=True)
