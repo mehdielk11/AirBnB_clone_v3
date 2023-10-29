@@ -1,10 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Sep  1 14:42:23 2020
-@authors: Robinson Montes.
-          Mauricio Olarte
-"""
 from flask import jsonify, Blueprint
 from models import storage
 from api.v1.views import app_views
