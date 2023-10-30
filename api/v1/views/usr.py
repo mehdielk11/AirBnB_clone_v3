@@ -5,6 +5,7 @@ from api.v1.views import app_views
 from models import storage
 from models.user import User
 
+
 @app_views.route('/users',
                  strict_slashes=False,
                  methods=['GET', 'POST'])
@@ -40,11 +41,12 @@ def view_users():
         return jsonify(obj.to_dict()), 201
 
     if request.method == 'GET':
-        users = storage.all(User)  # Specify the User class
-        user_list = []
+        users = storage.all("User")
+        list = []
         for name, user in users.items():
-            user_list.append(user.to_dict())
-        return jsonify(user_list)
+            list.append(user.to_dict())
+        return jsonify(list)
+
 
 @app_views.route('/users/<id>',
                  strict_slashes=False,
@@ -53,15 +55,17 @@ def view_user_id(id):
     """Returns a list of all User objects, or delete an
     object if a given id
     """
-    user = storage.get(User, id)  # Specify the User class
+    user = storage.get(User, id)
 
     if user is None:
         return abort(404)
 
     if request.method == 'GET':
+
         return jsonify(user.to_dict())
 
     if request.method == 'DELETE':
+
         storage.delete(user)
         storage.save()
         return jsonify({}), 200
@@ -77,7 +81,6 @@ def view_user_id(id):
             if key not in ["id", "email", "created_at", "updated_at"]:
                 setattr(user, key, value)
         # This save is possibly not working to obtain
-        # permanent changes in the database
+        # permanent changes in the data base
         storage.save()
         return jsonify(user.to_dict())
-
